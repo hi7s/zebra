@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hi7s.tech.zebra.dao.ColumnMapper">
+    <resultMap id="defaultMap" type="com.hi7s.tech.zebra.entity.Column">
+        <result column="column_name" property="name"/>
+        <result column="column_key" property="isKey"/>
+        <result column="is_nullable" property="notNull"/>
+        <result column="data_type" property="type"/>
+        <result column="character_maximum_length" property="length"/>
+        <result column="column_comment" property="comment"/>
+    </resultMap>
+
+    <select id="getList" resultMap="defaultMap">
+        select `column_name`, `column_key`, `is_nullable`, `data_type`, `character_maximum_length`, `column_comment`
+        from `columns`
+        where `table_schema` = #{dbName} and `table_name` = #{tableName};
+    </select>
+</mapper>

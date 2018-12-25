@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hi7s.tech.zebra.dao.TableMapper">
+    <resultMap id="defaultMap" type="com.hi7s.tech.zebra.entity.Table">
+        <id column="table_name" property="name"/>
+        <id column="table_comment" property="comment"/>
+    </resultMap>
+
+    <select id="getList" resultMap="defaultMap">
+        select `table_name`, `table_comment` from `TABLES` where `table_schema` = #{dbName};
+    </select>
+</mapper>
